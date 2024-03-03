@@ -1,0 +1,19 @@
+<!-- update.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Employee</title>
+</head>
+<body>
+
+<h1>Update Employee with ID: {{ employee_id }}</h1>
+
+<form method="post" action="{% url 'update' employee_id=employee_id %}" enctype="multipart/form-data" >
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Update</button>
+</form>
+<a href="/"><button type="submit">Home</button></a>
+
+</body>
+</html>

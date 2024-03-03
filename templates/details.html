@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Details of Employee</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="" type="text/css">
+</head>
+<body>
+
+<h2>Employee Details</h2>
+{% if employee.profile_pic %}
+    <p>Profile Pic: </p>
+    <img src="{{ employee.profile_pic.url }}" alt="Profile Picture" height=100 width=100>
+{% else %}
+    <p>No profile picture available</p>
+{% endif %}
+<p>Employee ID: {{ employee.id }}</p>
+<p>First Name: {{ employee.first_name }}</p>
+<p>Last Name: {{ employee.last_name }}</p>
+<p>Department: {{ employee.dept.name }}</p>
+<p>Salary: {{ employee.salary }}</p>
+<p>Bonus: {{ employee.bonus }}</p>
+<p>Role: {{ employee.role.name }}</p>
+<p>Phone: {{ employee.phone }}</p>
+<p>Hire Date: {{ employee.hire_date }}</p>
+<p>Updated Date: {{ employee.last_updated }}</p>
+<br><br>
+<a href="/"><button type="submit">Home</button></a><br>
+
+<form action="/delete/{{ employee.id }}" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Delete">
+</form>
+
+</body>
+</html>

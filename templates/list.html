@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table {
+            font-family: Arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<h2>Employee Data</h2>
+<a href="/add"><button type="submit">Add Employee</button></a>
+<table>
+  <tr>
+    <th>Emp_ID</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Department</th>
+    <th>Salary</th>
+    <th>Bonus</th>
+    <th>Role</th>
+    <th>Phone</th>
+    <th>Hire Date</th>
+    <th>Update</th>
+  </tr>
+  {% for employee in emps %}
+  <tr>
+    <td>{{ employee.id }}</td>
+    <td>{{ employee.first_name }}</td>
+    <td>{{ employee.last_name }}</td>
+    <td>{{ employee.dept.name }}</td>
+    <td>{{ employee.salary }}</td>
+    <td>{{ employee.bonus }}</td>
+    <td>{{ employee.role.name }}</td>
+    <td>{{ employee.phone }}</td>
+    <td>{{ employee.hire_date }}</td>
+    <td><a href="{% url 'update' employee_id=employee.id %}">
+    <button type="button">Edit</button></td>
+  </tr>
+  {% endfor %}
+</table>
+<a href="/"><button type="submit">Home</button></a><br><br>
+<a href="/signout"><button type="submit">Sign Out</button></a>
+</body>
+</html>
